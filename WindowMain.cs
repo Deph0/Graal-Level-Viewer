@@ -41,6 +41,7 @@ namespace GraalLevelViewer
             //Create sub-folders if they don't exist
             string folderPath_Tilesets = currentDirectory + "tilesets";
             string folderPath_Images = currentDirectory + "images";
+			//string folderPath_Images = "/Users/andreaskramer/Library/Application Support/Graal/levels/images/";
 
             if (!Directory.Exists(folderPath_Tilesets))
             {
@@ -177,6 +178,10 @@ namespace GraalLevelViewer
         private void WindowMain_DragDrop(object sender, DragEventArgs e)
         {
             Console.WriteLine("Drop");
+			string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop) ;
+			Console.WriteLine("Selected file: {0}", files[0]);
+			chosenFile = files[0];
+            Generate();            
         }
 
         private void LevelViewerBrowseButton_Click(object sender, EventArgs e)
